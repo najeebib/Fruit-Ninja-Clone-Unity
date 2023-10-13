@@ -6,13 +6,7 @@ public class Fruit : MonoBehaviour
 {
     public GameObject slicedFruitPrefab;
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space)) 
-        {
-            CreateSlicedFruit();
-        }
-    }
+    
 
     public void CreateSlicedFruit()
     {
@@ -25,7 +19,16 @@ public class Fruit : MonoBehaviour
             rigidbody.transform.rotation = Random.rotation;
             rigidbody.AddExplosionForce(Random.Range(150, 350), transform.position, 5);
         }
-
+        Destroy(inst, 5);
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Blade b = collision.GetComponent<Blade>();
+
+        if(!b) return;
+
+        CreateSlicedFruit();
     }
 }
