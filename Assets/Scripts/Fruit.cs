@@ -6,7 +6,6 @@ public class Fruit : MonoBehaviour
 {
     public GameObject slicedFruitPrefab;
 
-    
 
     public void CreateSlicedFruit()
     {
@@ -19,6 +18,7 @@ public class Fruit : MonoBehaviour
             rigidbody.transform.rotation = Random.rotation;
             rigidbody.AddExplosionForce(Random.Range(150, 350), transform.position, 5);
         }
+        FindAnyObjectByType<GameManager>().IncreseScore(2);
         Destroy(inst, 5);
         Destroy(gameObject);
     }
