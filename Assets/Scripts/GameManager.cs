@@ -11,13 +11,15 @@ public class GameManager : MonoBehaviour
     private int highScore;
     public Text scoreText;
     public Text bestScoreText;
-
+    [Header("Sounds")]
+    public AudioClip sliceSound;
+    private AudioSource audioSource;
     [Header("Game over elements")]
     public GameObject gameOverPanel;
     public Text gameOverPanelText;
-
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         gameOverPanel.SetActive(false);
     }
     private void Start()
@@ -58,5 +60,9 @@ public class GameManager : MonoBehaviour
             Destroy(obj);
         }
         Time.timeScale = 1 ;
+    }
+    public void SliceSound()
+    {
+        audioSource.PlayOneShot(sliceSound);
     }
 }

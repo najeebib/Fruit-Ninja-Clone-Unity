@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Blade : MonoBehaviour
 {
-    public float minVelo = 0.01f;
+    public float minVelo = 0.1f;
     private Vector3 lastMousePos;
     private Vector3 mouseVelo;
 
@@ -31,9 +31,10 @@ public class Blade : MonoBehaviour
     }
     private bool IsMouseMoving()
     {
-        Vector3 curMousePos =transform.position;
+        Vector3 curMousePos = Input.mousePosition;
         float traveled = (lastMousePos - curMousePos).magnitude;
         lastMousePos = curMousePos;
+        Debug.Log(traveled);
         if(traveled > minVelo) 
             return true;
         else

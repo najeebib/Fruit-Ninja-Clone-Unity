@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bomb
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f839e9018393f46119baaa0dae9db4de, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f839e9018393f46119baaa0dae9db4de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.9271783
