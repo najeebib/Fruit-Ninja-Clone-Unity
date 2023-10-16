@@ -18,12 +18,14 @@ public class Spawner : MonoBehaviour
     }
     private IEnumerator SpawnFruits() 
     {
+        //  continuesly spawn fruit
         while (true) 
         { 
             yield return new WaitForSeconds(Random.Range(minWait,maxWait));
             Transform t = spawnPlaces[Random.Range(0,spawnPlaces.Length)];
 
             GameObject go = null;
+            // every once in a while spawn a bomb instead
             float p = Random.Range(0,100);
             if(p < 10)
                 go = bomb;
@@ -32,7 +34,6 @@ public class Spawner : MonoBehaviour
 
             GameObject fruit = Instantiate(go, t.position, t.rotation);
             fruit.GetComponent<Rigidbody2D>().AddForce(t.transform.up * Random.Range(minForce,maxForce), ForceMode2D.Impulse); 
-            Debug.Log("fruit spawned");
             Destroy(fruit,5);
         }
     }

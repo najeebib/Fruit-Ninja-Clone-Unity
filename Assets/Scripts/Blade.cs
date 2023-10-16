@@ -19,22 +19,24 @@ public class Blade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // make the blade active only when the mouse is moving
         col.enabled = IsMouseMoving();
         SetBladeToMouse();
     }
 
     private void SetBladeToMouse()
     {
+        //set the blade to the mouse
         var mousePos = Input.mousePosition;
         mousePos.z = 10;
         rb.position = Camera.main.ScreenToWorldPoint(mousePos);
     }
     private bool IsMouseMoving()
     {
+        // check if the mouse is moving
         Vector3 curMousePos = Input.mousePosition;
         float traveled = (lastMousePos - curMousePos).magnitude;
         lastMousePos = curMousePos;
-        Debug.Log(traveled);
         if(traveled > minVelo) 
             return true;
         else

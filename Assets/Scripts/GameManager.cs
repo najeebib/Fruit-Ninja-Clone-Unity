@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     }
     public void IncreseScore(int points)
     {
+        // increase the score when the user cuts a fruit
         highScore = PlayerPrefs.GetInt("Highscore");
         score += points;
         if(score >  highScore) 
@@ -42,14 +43,17 @@ public class GameManager : MonoBehaviour
     }
     public void OnBombHit()
     {
+        // end the game when user hits the bomb
         gameOverPanelText.text = "Your score is: " + score.ToString();
         gameOverPanel.SetActive(true);
         Time.timeScale = 0;
         Debug.Log("Bomb hit");
+        // display the game over panel
         gameOverPanel.SetActive(true);
     }
     public void ResetartGame()
     {
+        // restart the game
         score = 0;
         scoreText.text = "";
         bestScoreText.text = "";
@@ -60,6 +64,10 @@ public class GameManager : MonoBehaviour
             Destroy(obj);
         }
         Time.timeScale = 1 ;
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
     }
     public void SliceSound()
     {
