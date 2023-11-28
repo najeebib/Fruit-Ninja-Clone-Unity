@@ -9,8 +9,8 @@ public class Spawner : MonoBehaviour
     public Transform[] spawnPlaces; 
     public float minWait = .3f;
     public float maxWait = 1f;
-    public float minForce = 10;
-    public float maxForce = 17;
+    public float minForce = 6;
+    public float maxForce = 15;
     // Start is called before the first frame update
     void Start()
     {
